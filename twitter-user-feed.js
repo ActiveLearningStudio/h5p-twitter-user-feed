@@ -39,6 +39,7 @@ H5P.TwitterUserFeed = (function ($) {
           // trigger resize event once twitter feed has been loaded
           self.trigger('resize');
         });
+        self.triggerXAPI('interacted');
       }
     );
 
@@ -46,7 +47,7 @@ H5P.TwitterUserFeed = (function ($) {
     $container.addClass("h5p-twitter-user-feed");
 
     $container.append(
-      '<a class="twitter-timeline" href="https://twitter.com/twitterapi"' +
+      '<a class="twitter-timeline" href="https://twitter.com/'+this.options.userName+'"' +
       'data-widget-id="558756407995273216" data-screen-name="' + this.options.userName +
       '" data-show-replies="' + this.options.showReplies +
       '" data-tweet-limit="' + this.options.numTweets + '">Tweets by @' +
@@ -54,6 +55,7 @@ H5P.TwitterUserFeed = (function ($) {
 
     if (window.twttr !== undefined && window.twttr.widgets !== undefined) {
       window.twttr.widgets.load($container.get(0));
+      
     }
   };
 
