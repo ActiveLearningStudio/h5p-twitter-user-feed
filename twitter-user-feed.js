@@ -104,6 +104,7 @@ H5P.TwitterUserFeed = (function ($) {
 
 
   C.prototype.triggerConsumed = function () {
+   var title = this.contentData.hasOwnProperty("metadata") && this.contentData.metadata.hasOwnProperty("title") ? this.contentData.metadata.title : "Twitter User Feed";
     var xAPIEvent = this.createXAPIEventTemplate({
       id: 'http://activitystrea.ms/schema/1.0/consume',
       display: {
@@ -117,7 +118,7 @@ H5P.TwitterUserFeed = (function ($) {
 
     Object.assign(xAPIEvent.data.statement.object.definition, {
       name:{
-        'en-US': "Twitter User Feed"
+        'en-US': title
       }
     });
 
